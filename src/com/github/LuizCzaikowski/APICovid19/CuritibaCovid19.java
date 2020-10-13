@@ -10,15 +10,13 @@ import java.io.IOException;
  */
 public class CuritibaCovid19 {
 
-    public void run() {
+    public void run() throws IOException {
         
-        String arquivoCSV = "C:\\Users\\Luiz_\\Documents\\NetBeansProjects\\CasosChecker\\CasosCovid.csv";
-        BufferedReader br = null;
+        String arquivoCSV = "CasosCovid.csv";
         String linha = "";
         String csvDivisor = ",";
-        try {
-
-            br = new BufferedReader(new FileReader(arquivoCSV));
+        FileReader fileReader = new FileReader(arquivoCSV);
+            try(BufferedReader br = new BufferedReader(fileReader)){
             while ((linha = br.readLine()) != null) {
 
                 String[] pais = linha.split(csvDivisor);
@@ -29,17 +27,7 @@ public class CuritibaCovid19 {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        } 
 
     }
 }

@@ -4,14 +4,25 @@
  * and open the template in the editor.
  */
 package casoschecker;
+
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 /**
  *
  * @author Saulo Jr
  */
 public class FactoryJBDC {
-    
-    
-    public Connection  a;
+
+    public static Connection conexao() {
+        Connection connec = null;
+        try {
+            String path = System.getProperty("user.dir");
+            String url = "jdbc.sqlite:" + path + "/database/bank.db";
+            connec = DriverManager.getConnection(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connec;
+    }
 }
