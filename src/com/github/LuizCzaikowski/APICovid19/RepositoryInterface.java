@@ -14,6 +14,7 @@ import java.util.List;
 public interface RepositoryInterface<K,T> {
   
     public List<T> all();
+    public void Insert(T entidade);
     public void Media(T entidade);
     public void Moda (T entidade);
 }
