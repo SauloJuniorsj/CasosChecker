@@ -21,11 +21,12 @@ public class CasosChecker {
         PessoasRepDB banco = new PessoasRepDB();
         CuritibaCovid19 obj = new CuritibaCovid19();
         PessoasRep pessoa = new PessoasRep();
-        pessoa = obj.run();
+        banco.Media();
+      /*  pessoa = obj.run();
         obj.printar(pessoa);
        
         for(Pessoas p : pessoa.lista){
             banco.Insert(p);
-        }
+        }*/
     }
 }

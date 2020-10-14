@@ -45,9 +45,19 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
         return lista;
     }
 
-    @Override
-    public void Media(Pessoas entidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void Media() {
+        try (Connection connec = FactoryJBDC.conexao()) {
+            String sql = "select avg(idade) as 'Idade' from Pessoas where Encerramento like '�BITO CONF'";
+            Statement st = connec.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                System.out.println(rs.getFloat("Idade"));
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
     }
 
     @Override
@@ -72,4 +82,5 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
             e.printStackTrace();
         }
     }
+
 }
