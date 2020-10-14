@@ -90,7 +90,7 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
             Statement st = connec.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                System.out.println("No dia " + rs.getString("DataObito") + " foram confirmados " + rs.getInt("cnt") + " casos");
+                System.out.println("No dia " + rs.getString("DataObito") + " foram confirmados " + rs.getInt("cnt") + " óbitos");
             }
             
         }catch(SQLException e){
