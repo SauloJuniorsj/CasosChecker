@@ -19,7 +19,7 @@ public class FactoryJBDC {
         Connection connec = null;
         try {
             String path = System.getProperty("user.dir");
-            String url = "jdbc.sqlite:" + path + "/database/bank.db";
+            String url = "jdbc:sqlite:" + path + "/database/bank.db";
             connec = DriverManager.getConnection(url);
         } catch (SQLException e) {
             e.printStackTrace();

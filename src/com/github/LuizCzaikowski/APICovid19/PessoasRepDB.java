@@ -37,7 +37,6 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
                         resultado.getString("Encerramento"),
                         resultado.getString("DataObito")
                 );
-
                 lista.add(p);
             }
         } catch (SQLException ex) {
@@ -59,7 +58,7 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
     @Override
     public void Insert(Pessoas entidade) {
         try (Connection connec = FactoryJBDC.conexao()) {
-            String sql = "INSERT INTO Pessoas (Posicao, DataInclusao, Classidicacao, Idade, Sexo, Encerramento, DataObito) values (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Pessoas (Posicao, DataInclusao, Classidicacao, Idade, Sexo, Encerramento, DataObito) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ps = connec.prepareStatement(sql);
             ps.setLong(1, entidade.getPosicao());
             ps.setString(2, entidade.getDataInclude());
@@ -67,7 +66,7 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
             ps.setInt(4, entidade.getIdade());
             ps.setString(5, entidade.getSexo());
             ps.setString(6, entidade.getEncerramento());
-            ps.setString(7, entidade.getDataObito());
+            ps.setString(7, entidade.getDataObito().isEmpty() ? "" : entidade.getDataObito());
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
