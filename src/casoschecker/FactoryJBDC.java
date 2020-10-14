@@ -7,6 +7,7 @@ package casoschecker;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,7 +21,7 @@ public class FactoryJBDC {
             String path = System.getProperty("user.dir");
             String url = "jdbc.sqlite:" + path + "/database/bank.db";
             connec = DriverManager.getConnection(url);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return connec;
