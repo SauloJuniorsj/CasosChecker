@@ -51,7 +51,7 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
             Statement st = connec.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                System.out.println(rs.getFloat("Idade"));
+                System.out.println("A média da idade dos óbitos era " + rs.getFloat("Idade"));
             }
             
         }catch(SQLException e){
@@ -65,19 +65,21 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void Insert(Pessoas entidade) {
+ 
+    public void Insert(PessoasRep entidade) {
         try (Connection connec = FactoryJBDC.conexao()) {
+            for(Pessoas p : entidade.lista){
             String sql = "INSERT INTO Pessoas (Posicao, DataInclusao, Classidicacao, Idade, Sexo, Encerramento, DataObito) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ps = connec.prepareStatement(sql);
-            ps.setLong(1, entidade.getPosicao());
-            ps.setString(2, entidade.getDataInclude());
-            ps.setString(3, entidade.getClassificacao());
-            ps.setInt(4, entidade.getIdade());
-            ps.setString(5, entidade.getSexo());
-            ps.setString(6, entidade.getEncerramento());
-            ps.setString(7, entidade.getDataObito().isEmpty() ? "" : entidade.getDataObito());
+            ps.setLong(1, p.getPosicao());
+            ps.setString(2, p.getDataInclude());
+            ps.setString(3, p.getClassificacao());
+            ps.setInt(4, p.getIdade());
+            ps.setString(5, p.getSexo());
+            ps.setString(6, p.getEncerramento());
+            ps.setString(7, p.getDataObito().isEmpty() ? "" : p.getDataObito());
             ps.execute();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
