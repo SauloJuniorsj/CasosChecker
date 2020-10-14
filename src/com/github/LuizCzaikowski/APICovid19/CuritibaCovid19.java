@@ -14,14 +14,14 @@ public class CuritibaCovid19 {
         
         String arquivoCSV = "CasosCovid.csv";
         String linha = "";
-        String csvDivisor = ",";
+        String csvDivisor = ";";
         FileReader fileReader = new FileReader(arquivoCSV);
             try(BufferedReader br = new BufferedReader(fileReader)){
             while ((linha = br.readLine()) != null) {
 
                 String[] pais = linha.split(csvDivisor);
 
-                System.out.println("Teste: " + arquivoCSV );
+                System.out.println(linha);
 
             }
 
