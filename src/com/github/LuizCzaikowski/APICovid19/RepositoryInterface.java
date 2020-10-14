@@ -17,4 +17,5 @@ public interface RepositoryInterface<K,T> {
     public void Insert(T entidade);
     public void Media();
     public void Moda (T entidade);
+    public void DezDesc();
 }

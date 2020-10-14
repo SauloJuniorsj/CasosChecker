@@ -21,7 +21,7 @@ public class CasosChecker {
         PessoasRepDB banco = new PessoasRepDB();
         CuritibaCovid19 obj = new CuritibaCovid19();
         PessoasRep pessoa = new PessoasRep();
-        banco.Media();
+        banco.DezDesc();
       /*  pessoa = obj.run();
         obj.printar(pessoa);
        

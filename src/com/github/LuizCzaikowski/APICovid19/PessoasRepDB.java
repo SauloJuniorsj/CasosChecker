@@ -83,4 +83,20 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
         }
     }
 
+    @Override
+    public void DezDesc() {
+   try (Connection connec = FactoryJBDC.conexao()) {
+            String sql = "select DataObito, count(DataObito) as cnt from Pessoas where DataObito <> '' group by DataObito  order by cnt desc limit 10;";
+            Statement st = connec.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                System.out.println("No dia " + rs.getString("DataObito") + " foram confirmados " + rs.getInt("cnt") + " casos");
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+    }
+
 }
