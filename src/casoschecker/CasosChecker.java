@@ -17,6 +17,7 @@ public class CasosChecker {
         CuritibaCovid19 obj = new CuritibaCovid19();
         PessoasRep pessoa = new PessoasRep();
         pessoa = obj.run();
-        
+        obj.printar(pessoa);
+       
     }
 }

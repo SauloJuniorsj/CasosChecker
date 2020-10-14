@@ -5,8 +5,8 @@ package com.github.LuizCzaikowski.APICovid19;
  * @author Saulo Jr
  */
 public class Pessoas {
-    
-    private int posicao;
+
+    private long posicao;
     private String dataInclude;
     private String classificacao;
     private int idade;
@@ -14,7 +14,38 @@ public class Pessoas {
     private String encerramento;
     private String dataObito;
 
-    public Pessoas(int posicao, String dataInclude, String classificacao, int idade, String sexo, String encerramento, String dataObito) {
+    public Pessoas(long posicao, String dataInclude, String classificacao, int idade, String sexo, String encerramento) {
+        this.posicao = posicao;
+        this.dataInclude = dataInclude;
+        this.classificacao = classificacao;
+        this.idade = idade;
+        this.sexo = sexo;
+        this.encerramento = encerramento;
+        this.dataObito = "###";
+    }
+
+    
+    public Pessoas(long posicao, String dataInclude, String classificacao, String sexo) {
+        this.posicao = posicao;
+        this.dataInclude = dataInclude;
+        this.classificacao = classificacao;
+        this.idade = 0;
+        this.sexo = sexo;
+        this.encerramento = "";
+        this.dataObito = "###";
+    }
+
+    public Pessoas(long posicao, String dataInclude, String classificacao, int idade, String sexo) {
+        this.posicao = posicao;
+        this.dataInclude = dataInclude;
+        this.classificacao = classificacao;
+        this.idade = idade;
+        this.sexo = sexo;
+        this.encerramento = "";
+        this.dataObito = "###";
+    }
+
+    public Pessoas(long posicao, String dataInclude, String classificacao, int idade, String sexo, String encerramento, String dataObito) {
         this.posicao = posicao;
         this.dataInclude = dataInclude;
         this.classificacao = classificacao;
@@ -24,7 +55,7 @@ public class Pessoas {
         this.dataObito = dataObito;
     }
 
-    public int getPosicao() {
+    public long getPosicao() {
         return posicao;
     }
 
@@ -79,4 +110,9 @@ public class Pessoas {
     public void setDataObito(String dataObito) {
         this.dataObito = dataObito;
     }
+    @Override
+    public String toString() {
+        return  posicao + " Data inclusão = " + dataInclude + " Classificação " + classificacao + " Idade " + idade + " Sexo " + sexo + " Encerramento " + encerramento;
+    }
+    
 }

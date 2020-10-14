@@ -29,7 +29,7 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
 
             while (resultado.next()) {
                 Pessoas p = new Pessoas(
-                        resultado.getInt("Posicao"),
+                        resultado.getLong("Posicao"),
                         resultado.getString("DataInclusao"),
                         resultado.getString("Classificacao"),
                         resultado.getInt("Idade"),
@@ -61,7 +61,7 @@ public class PessoasRepDB implements RepositoryInterface<Integer, Pessoas> {
         try (Connection connec = FactoryJBDC.conexao()) {
             String sql = "INSERT INTO Pessoas (Posicao, DataInclusao, Classidicacao, Idade, Sexo, Encerramento, DataObito) values (?,?,?,?,?,?,?)";
             PreparedStatement ps = connec.prepareStatement(sql);
-            ps.setInt(1, entidade.getPosicao());
+            ps.setLong(1, entidade.getPosicao());
             ps.setString(2, entidade.getDataInclude());
             ps.setString(3, entidade.getClassificacao());
             ps.setInt(4, entidade.getIdade());
